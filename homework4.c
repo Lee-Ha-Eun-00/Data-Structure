@@ -1,7 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> //malloc함수를 사용하기 위한 헤더파일포함
 #include <time.h> //time()함수를 사용하기 위한 헤더파일 포함
-#include <malloc.h> //_msize()함수 사용하기 위한 헤더파일 포함
 #define _CRT_SECURE_NO_WARNINGS
 
 int row, col; //행과 열을 저장할 변수
