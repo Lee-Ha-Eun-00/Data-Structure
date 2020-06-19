@@ -238,24 +238,23 @@ int deleteVertex(Graph* g, int ver) /* vertex deletion */
 	*/
 	for (int i = 0; i < MAX_VERTEX; i++)
 	{
-		temp = ((g->vlist) + i)->head;
-		trail = temp;
-		while (temp != NULL)
+		if (arr[i] == 0)
+			continue;
+		else
 		{
-			if (temp->num == ver)
+			temp = ((g->vlist) + i)->head;
+			while (temp!=NULL)
 			{
-				trail = temp->link;
-				free(temp);
-			}
-			else
-			{
+				if ((temp->num == ver) && (i != ver))
+				{
+					deleteEdge(g, ver, i);
+					break;
+				}
 				temp = temp->link;
-				trail = temp;
 			}
 		}
 	}
 	//ver 삭제(메모리 해제, arr의 해당 인덱스값 0으로바꿈)
-	freeList(((g->vlist) + ver)->head);
 	((g->vlist) + ver)->head = NULL;
 	arr[ver] = 0;
 	return 1;
