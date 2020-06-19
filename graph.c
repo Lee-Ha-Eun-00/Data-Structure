@@ -305,14 +305,15 @@ int insertEdge(Graph* g, int ver1, int ver2) /* new edge creation between two ve
 
 
 	//ver1의 리스트에 ver2의 값 추가
-	Vertex* vertex = (Vertex*)malloc(sizeof(Vertex));
+	Vertex* vertex1 = (Vertex*)malloc(sizeof(Vertex));
+	Vertex* vertex2 = (Vertex*)malloc(sizeof(Vertex));
 	first = (g->vlist) + ver1;
 	temp = ((g->vlist) + ver1)->head;
 	if (temp == NULL) //리스트가 비어있을때
 	{
-		vertex->num = ver2;
-		vertex->link = NULL;
-		first->head = vertex;
+		vertex1->num = ver2;
+		vertex1->link = NULL;
+		first->head = vertex1;
 	}
 	else
 	{
@@ -321,9 +322,9 @@ int insertEdge(Graph* g, int ver1, int ver2) /* new edge creation between two ve
 			trail = temp;
 			temp = temp->link;
 		}
-		vertex->num = ver2;
-		vertex->link = NULL;
-		trail->link = vertex;
+		vertex1->num = ver2;
+		vertex1->link = NULL;
+		trail->link = vertex1;
 	}
 
 
@@ -332,9 +333,9 @@ int insertEdge(Graph* g, int ver1, int ver2) /* new edge creation between two ve
 	temp = ((g->vlist) + ver2)->head;
 	if (temp == NULL) //리스트가 비어있을 때
 	{
-		vertex->num = ver1;
-		vertex->link = NULL;
-		first->head = vertex;
+		vertex2->num = ver1;
+		vertex2->link = NULL;
+		first->head = vertex2;
 	}
 	else
 	{
@@ -343,9 +344,9 @@ int insertEdge(Graph* g, int ver1, int ver2) /* new edge creation between two ve
 			trail = temp;
 			temp = temp->link;
 		}
-		vertex->num = ver1;
-		vertex->link = NULL;
-		trail->link = vertex;
+		vertex2->num = ver1;
+		vertex2->link = NULL;
+		trail->link = vertex2;
 	}
 
 	return 1;
@@ -579,7 +580,7 @@ int breadthFS(Graph* g, int key) /* breadth first search using queue */
 			temp = temp->link; //리스트의 그다음 vertex
 		}
 	}
-
+    printf("\n\n");
 	return 1;
 }
 
